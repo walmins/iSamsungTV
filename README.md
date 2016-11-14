@@ -1,5 +1,8 @@
 # iSamsungTV: Remote Command Line Interface
 
+## News
+
+[iBrew](https://github.com/Tristan79/iBrew/) the Smarter Coffee and iKettle 2.0 interface?!
 
 ## Introduction
 iBrew is an interface to the Samsung TV series C, D, E and F...
@@ -27,7 +30,7 @@ You can download a precompiled binary for [macOS](https://github.com/Tristan79/i
 
 ### From source
 
-You can download and unpack the [source](https://github.com/Tristan79/iSmarterTV/archive/master.zip) or download it from github using [Github Desktop](https://desktop.github.com) or manually with ```git clone https://github.com/Tristan79/iSamsungTV.git``` and run ```make``` inside the iSmarterTV folder to compile it.
+You can download and unpack the [source](https://github.com/Tristan79/iSamsungTV/archive/master.zip) or download it from github using [Github Desktop](https://desktop.github.com) or manually with ```git clone https://github.com/Tristan79/iSamsungTV.git``` and run ```make``` inside the iSamsungTV folder to compile it.
 
 ## Usage 
 
