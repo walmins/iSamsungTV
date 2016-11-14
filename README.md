@@ -79,7 +79,7 @@ The Key Codes can be found [here!](https://raw.githubusercontent.com/Tristan79/i
  
 ### [iSamsungTVPopup.sh](https://github.com/Tristan79/iSamsungTV/raw/master/iSamsungTVPopup.sh)
 
-It also lets you send popup messages to your screen. 
+It lets you send notification popup messages to your screen. 
  
 ```
 iSamsungTVPopup.sh 10.0.0.2 "Pop says the message on the big screen!" 

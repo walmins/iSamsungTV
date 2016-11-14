@@ -1,0 +1,72 @@
+<pre>
+PORT      STATE SERVICE
+52235/tcp open  unknown
+52396/tcp open  unknown
+55000/tcp open  unknown
+55001/tcp open  unknown
+</pre>
+
+<p>55000 is used for remote control over network. There is application for iPhone and Android smartphones (unfortunately only these created by Samsung) to control TV through WiFi.
+
+<h1>1. Authentication</h1>
+<p>When connection on port 55000 is established, remote control must be authenticated. It sends datagram.</p>
+<pre>0000   00 13 00 69 70 68 6f 6e 65 2e 69 61 70 70 2e 73  ...iphone.iapp.s
+0010   61 6d 73 75 6e 67 38 00 64 00 14 00 4d 54 6b 79  amsung8.d...MTky
+0020   4c 6a 45 32 4f 43 34 78 4c 6a 45 77 4d 41 3d 3d  LjE2OC4xLjEwMA==
+0030   10 00 5a 32 52 7a 4e 7a 4d 30 64 47 64 30 5a 41  ..Z2RzNzM0dGd0ZA
+0040   3d 3d 0c 00 63 32 4d 77 64 48 6b 75 63 47 77 3d  ==..c2MwdHkucGw=</pre>
+<p>And the meaning of this bytes.</p>
+<pre>offset  value and description
+------	---------------------
+0x00   	0x00 - datagram type?
+0x01	0x0013 - string length (little endian)
+0x03	"iphone.iapp.samsung" - string content
+0x16	0x0038 - payload size (little endian)
+0x18	payload</pre>
+<p>I don&#8217;t know the meaning of the string above, my TV is accepting any string in here, but I suggest to use this particular one just for compatibility reason.</p>
+<p>Payload starts with 2 bytes: 0x64 and 0x00, then comes 3 strings encoded with <a href="http://en.wikipedia.org/wiki/Base64" target="_blank">base64 </a>algorithm. Every string is preceded by 2-bytes field containing encoded string length. These three strings are as follow:</p>
+<ul>
+<li>remote control device IP,</li>
+<li>unique ID &#8211; value to distinguish controllers,</li>
+<li>name &#8211; it will be displayed as controller name.</li>
+</ul>
+<p>TV reply us giving following datagram:</p>
+<pre>0000    02 0c 00 69 61 70 70 2e 73 61 6d 73 75 6e 67 06  ...iapp.samsung.
+0010    00 0a 00 02 00 00 00                             .......</pre>
+<p>It means:</p>
+<pre>offset  value and description
+------	---------------------
+0x00   	don't know, it it always 0x00 or 0x02
+0x01	0x000c - string length (little endian)
+0x03	"iapp.samsung" - string content
+0x0f	0x0006 - payload size (little endian)
+0x11	payload</pre>
+<p>String content is always <em>iapp.samsung</em> or <em>iphone.livingroom.iapp.samsung</em>. Meaning of these strings is unclear, I suggest to not compare it with any specific value during response parsing (maybe other devices using another values).</p>
+<p>Payload is one of the following:</p>
+<ul>
+<li>0x64, 0x00, 0x01, 0x00 &#8211; access granted, you can now send key codes and it will be executed by TV,</li>
+<li>0x64, 0x00, 0x00, 0x00 &#8211; access denied &#8211; user rejected your network remote controller,</li>
+<li>0x0A, 0x00, 0x02, 0x00, 0x00, 0x00 &#8211; waiting for user to grant or deny access for your app,</li>
+<li>0x65, 0x00 &#8211; timeout or cancelled by user.</li>
+</ul>
+<div>Access is granted only during current TCP connection, when your app or TV disconnect, you have to repeat the authentication process.</div>
+<h1> 2. Sending key codes</h1>
+<p>Now you can send simple datagrams containing key codes.</p>
+<pre>0000    00 13 00 69 70 68 6f 6e 65 2e 69 61 70 70 2e 73  ...iphone.iapp.s
+0010    61 6d 73 75 6e 67 11 00 00 00 00 0c 00 53 30 56  amsung.......S0V
+0020    5a 58 31 5a 50 54 46 56 51                       ZX1ZPTFVQ</pre>
+<p>It means:</p>
+<pre>offset  value and description
+------	---------------------
+0x00   	always 0x00
+0x01	0x0013 - string length (little endian)
+0x03	"iphone.iapp.samsung" - string content
+0x16	0x0011 - payload size (little endian)
+0x18	payload</pre>
+<p>And the payload is:</p>
+<pre>offset  value and description
+------	---------------------
+0x18   	three 0x00 bytes
+0x1b	0x000c - key code size (little endian)
+0x1d	key code encoded as base64 string</pre>
+<p>TV response will be similar to authentication response, but with different payload data. I will not describe this data detailed because I wasn&#8217;t investigated it much.</p>
