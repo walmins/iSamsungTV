@@ -33,6 +33,7 @@ You can download a precompiled binary for [macOS](https://github.com/Tristan79/i
 ```
 curl -L https://github.com/Tristan79/iSamsungTV/raw/master/macOS/iSamsungTV > iSamsungTV
 chmod +x iSamsungTV
+mv iSamsungTV /usr/local/bin/
 ```
 
 ### Raspberry Pi
@@ -40,11 +41,13 @@ chmod +x iSamsungTV
 ```
 wget https://github.com/Tristan79/iSamsungTV/raw/master/pi/iSamsungTV
 chmod +x iSamsungTV
+mv iSamsungTV /usr/local/bin/
 ```
 
 ## Source
 
-You can download and unpack the [source](https://github.com/Tristan79/iSamsungTV/archive/master.zip) or download it from github using [Github Desktop](https://desktop.github.com) or manually with ```git clone https://github.com/Tristan79/iSamsungTV.git``` and run ```make``` inside the iSamsungTV folder to compile it.
+You can download and unpack the [source](https://github.com/Tristan79/iSamsungTV/archive/master.zip) or download it from github using [Github Desktop](https://desktop.github.com) or manually with ```git clone https://github.com/Tristan79/iSamsungTV.git``` and run ```make``` inside the iSamsungTV folder to compile it and 
+```mv iSamsungTV /usr/local/bin/``` it to the right location.
 
 ## Usage 
 
@@ -74,7 +77,7 @@ Examples: iSamsungTV 192.168.1.11 -KEY KEY_VOLUP
 
 The Key Codes can be found [here!](https://raw.githubusercontent.com/Tristan79/iSamsungTV/master/KeyCodes.txt)
  
-### iSamsungTVPopup.sh
+### [iSamsungTVPopup.sh](https://github.com/Tristan79/iSamsungTV/raw/master/iSamsungTVPopup.sh)
 
 It also lets you send popup messages to your screen. 
  

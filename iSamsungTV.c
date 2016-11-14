@@ -9,7 +9,7 @@
 * Part code/research from various places/people on the samygo forum
 *
 * Missing:
-* Network Error Handling (mostly missing)
+* Network Error Handling (mostly missing), it really hangs with a wrong IP ;-)
 * Key &| Text Input Checking, some chars will result in disabling the TV's remote part
 *
 
