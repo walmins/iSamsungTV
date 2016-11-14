@@ -2,7 +2,7 @@
 
 ## News
 
-[iBrew](https://github.com/Tristan79/iBrew/) the Smarter Coffee and iKettle 2.0 interface?!
+Smarthome lovers! Check out [iBrew](https://github.com/Tristan79/iBrew/) the Smarter Coffee and iKettle 2.0 interface?!
 
 ## Introduction
 iBrew is an interface to the Samsung TV series C, D, E and F...
@@ -26,9 +26,23 @@ It uses the network capabilities of the TV to mimic the remote and send notifica
 
 ## Download
 
-You can download a precompiled binary for [macOS](https://github.com/Tristan79/iSamsungTV/raw/master/macOS/iSamsungTV) or the [Raspberry Pi](https://github.com/Tristan79/iSamsungTV/raw/master/pi/iSamsungTV)
+You can download a precompiled binary for [macOS](https://github.com/Tristan79/iSamsungTV/raw/master/macOS/iSamsungTV) or the [Raspberry Pi](https://github.com/Tristan79/iSamsungTV/raw/master/pi/iSamsungTV) using a terminal
 
-### From source
+### MacOS
+
+```
+curl -L https://github.com/Tristan79/iSamsungTV/raw/master/macOS/iSamsungTV > iSamsungTV
+chmod +x iSamsungTV
+```
+
+### Raspberry Pi
+
+```
+wget https://github.com/Tristan79/iSamsungTV/raw/master/pi/iSamsungTV
+chmod +x iSamsungTV
+```
+
+## Source
 
 You can download and unpack the [source](https://github.com/Tristan79/iSamsungTV/archive/master.zip) or download it from github using [Github Desktop](https://desktop.github.com) or manually with ```git clone https://github.com/Tristan79/iSamsungTV.git``` and run ```make``` inside the iSamsungTV folder to compile it.
 
