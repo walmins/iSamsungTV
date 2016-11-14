@@ -1,0 +1,53 @@
+
+<p>Samsung TV&#8217;s (series D and probably series C) are equipped with some feature called Rendering Control Service. It is simply network protocol useful to control some parameters related to audio and video options (e.g. volume level, brightness etc).</p>
+<p>Protocol is based on HTTP and XML technology. Requests are sent by TCP port 52235 and looks like:</p>
+<pre>POST /upnp/control/RenderingControl1 HTTP/1.1
+Content-Type: text/xml; charset="utf-8
+SOAPACTION: "SoapAction:urn:schemas-upnp-org:service:RenderingControl:1#GetVolume"
+Cache-Control: no-cache
+Host: 192.168.1.102:52235
+Content-Length: 354
+Connection: Close
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+&lt;s:Body&gt;
+&lt;ns0:GetVolume xmlns:ns0="urn:schemas-upnp-org:service:RenderingControl:1"&gt;
+&lt;InstanceID&gt;0&lt;/InstanceID&gt;
+&lt;Channel&gt;Master&lt;/Channel&gt;
+&lt;/ns0:GetVolume&gt;
+&lt;/s:Body&gt;
+&lt;/s:Envelope&gt;</pre>
+<p>SOAPACTION contains action name (<em>GetVolume</em>), rest of this string is constant. Host IP is, of course, our device address. Content-Length define payload data length (XML data). Rest of the headers above is rather self-explanatory.</p>
+<p>Header lines are separated by two bytes <em>CR+LF</em> (carriage return <em>0x0D</em> followed by new line symbol <em>0x0A</em>). Between headers and payload there is one extra empty line &#8211; <em>CR+LF+CR+LF</em>.</p>
+<p>XML data is almost entirely predefined constant. Only <em>&lt;ns0:Getvolume &#8230;&gt;&#8230;&lt;/ns0:GetVolume&gt;</em> are customizable. <em>GetVolume</em> is action name and the subtags (<em>InstanceID</em>, <em>Channel</em>) are parameters with determined values. List of all valid actions, values and parameters are covered in <a title="specification" href="http://upnp.org/specs/av/UPnP-av-RenderingControl-v1-Service.pdf" target="_blank">http://upnp.org/specs/av/UPnP-av-RenderingControl-v1-Service.pdf</a>. My TV does not support every actions defined in here.</p>
+<p>TV response  will be similar to request:</p>
+<pre>HTTP/1.1 200 OK
+CONTENT-LENGTH: 289
+CONTENT-TYPE: text/xml; charset="utf-8"
+DATE: Thu, 01 Jan 1970 03:25:13 GMT
+EXT:
+SERVER: Linux/9.0 UPnP/1.0 PROTOTYPE/1.0
+
+&lt;s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;&lt;s:Body&gt;&lt;u:GetVolumeResponse xmlns:u="urn:schemas-upnp-org:service:RenderingControl:1"&gt;&lt;CurrentVolume&gt;6&lt;/CurrentVolume&gt;&lt;/u:GetVolumeResponse&gt;&lt;/s:Body&gt;&lt;/s:Envelope&gt;</pre>
+<p>I&#8217;m sure it require no comment.</p>
+<p>We can of course set up parameters too. E.g. it is possible to set volume:</p>
+<pre>POST /upnp/control/RenderingControl1 HTTP/1.1
+Content-Type: text/xml; charset="utf-8
+SOAPACTION: "SoapAction:urn:schemas-upnp-org:service:RenderingControl:1#<strong><span style="text-decoration: underline;">SetVolume</span></strong>"
+Cache-Control: no-cache
+Host: 192.168.1.102:52235
+Content-Length: 389
+Connection: Close
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;s:Envelope s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+&lt;s:Body&gt;
+&lt;ns0:<strong><span style="text-decoration: underline;">SetVolume</span></strong> xmlns:ns0="urn:schemas-upnp-org:service:RenderingControl:1"&gt;
+&lt;InstanceID&gt;0&lt;/InstanceID&gt;
+&lt;Channel&gt;Master&lt;/Channel&gt;
+&lt;InstanceID&gt;0&lt;/InstanceID&gt;
+<span style="text-decoration: underline;"><strong>&lt;DesiredVolume&gt;69&lt;/DesiredVolume&gt;</strong></span>
+&lt;/ns0:<strong><span style="text-decoration: underline;">SetVolume</span></strong>&gt;
+&lt;/s:Body&gt;
+&lt;/s:Envelope&gt;</pre>
