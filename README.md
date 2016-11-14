@@ -2,8 +2,8 @@
 
 
 ## Introduction
-iBrew is an interface to the Samsung TV C and D Series
-It uses the network capabilities of the TV to mimic the remote.
+iBrew is an interface to the Samsung TV series C, D, E and F...
+It uses the network capabilities of the TV to mimic the remote and send notification messages to the big screen!?
  
 ### It features!
  * Used for bridging and scripting in smarthome controller software ! 
@@ -16,11 +16,46 @@ It uses the network capabilities of the TV to mimic the remote.
  * Read the current Volume
  * Get the TV out of Stand-by
  
+### Notes
+ * Series F and up not tested!
+ * SOAP only tested on a C Series TV!
+ * Any issues post in comments!
+
+## Download
+
+You can download a precompiled binary for [macOS](https://github.com/Tristan79/iSamsungTV/raw/master/macOS/iSamsungTV) or the [Raspberry Pi](https://github.com/Tristan79/iSamsungTV/raw/master/pi/iSamsungTV)
+
+### From source
+
+You can download and unpack the [source](https://github.com/Tristan79/iSmarterTV/archive/master.zip) or download it from github using [Github Desktop](https://desktop.github.com) or manually with ```git clone https://github.com/Tristan79/iSamsungTV.git``` and run ```make``` inside the iSmarterTV folder to compile it.
+
 ## Usage 
+
+```
+Usage: iSamsungTV IP -KEY      KEY
+       iSamsungTV IP -TEXT     TEXT
+       iSamsungTV IP -SMS      DATE TIME FROM NUMBER TO NUMBER MESSAGE
+       iSamsungTV IP -CALL     DATE TIME FROM NUMBER TO NUMBER
+       iSamsungTV IP -SCHEDULE SUBJECT STARTDATE STARTTIME ENDDATE ENDTIME LOCATION OWNER NUMBER MESSAGE
+```
+
+```
+Examples: iSamsungTV 192.168.1.11 -KEY KEY_VOLUP
+          (Simulates press button Volume Up)
+
+          iSamsungTV 192.168.1.11 -TEXT "Colour Haze"
+          (Sends text to YouTube...)
+
+          iSamsungTV 192.168.1.11 -SMS 2013-6-24 "7:01:01 PM" Cris +555-4323 Me +555-2343 "Get Off The Couch!?"
+          (Show incomming SMS)
+
+          iSamsungTV 192.168.1.11 -CALL 23:06:01 Cris +555-4323 "" ""
+          (Show incomming call, skips input with empty strings)
+```
 
 ### Key Codes
 
-The Key Codes can be found [here!]()
+The Key Codes can be found [here!](https://raw.githubusercontent.com/Tristan79/iSamsungTV/master/KeyCodes.txt)
  
 ### iSamsungTVPopup.sh
 
@@ -33,25 +68,9 @@ iSamsungTVPopup.sh 10.0.0.2 "Pop says the message on the big screen!"
 _Using the sms function with a little bit of extra scripting_
 
 
-## Download
-
-You can download a precompiled binary for [macOS]() or the [Raspberry Pi]()
-
-### From source
-
-```
-git clone ...
-cd iSamsungTV
-make
-```
-
 ## Future Update
 
-Found interesting links about SOAP and DLNA... Reading the TV settings!?
-
-[1](http://sc0ty.pl/tag/rendering-control/)
-[2](https://wiki.samygo.tv/index.php5/Media_Play_and_DLNA)
-[3](http://upnp.org/specs/av/UPnP-av-RenderingControl-v1-Service.pdf)
+Found interesting links about SOAP and DLNA... Reading the TV settings!? [Link](http://sc0ty.pl/tag/rendering-control/) [Link](https://wiki.samygo.tv/index.php5/Media_Play_and_DLNA) [Link](http://upnp.org/specs/av/UPnP-av-RenderingControl-v1-Service.pdf)
 
 
 ### SOAP
@@ -95,7 +114,7 @@ User-Agent: HttpSamyGO/1.1
 * v0.00 Brainstorm!
 * v0.01 Samygo & [Remote](https://forum.samygo.tv/viewtopic.php?t=5794)
 * v0.02 Domoticz & [SOAP](https://www.domoticz.com/wiki/Samsung_TV)
-* v1.03 Push The Button, Sweet ([github]() publish release)
+* v1.03 Push The Button, Sweet ([github](https://github.com/Tristan79/iSamsungTV) publish release)
 
 ## License
 
