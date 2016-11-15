@@ -7,7 +7,9 @@ Smarthome lovers! Check out [iBrew](https://github.com/Tristan79/iBrew/) the Sma
 ## Introduction
 iBrew is an interface to the Samsung TV series C, D, E and F...
 It uses the network capabilities of the TV to mimic the remote and send notification messages to the big screen!?
- 
+
+__Please post any working model in the issues__
+
 ### It features!
  * Used for bridging and scripting in smarthome controller software ! 
  * Command Line 
@@ -52,30 +54,58 @@ You can download and unpack the [source](https://github.com/Tristan79/iSamsungTV
 ## Usage 
 
 ```
-Usage: iSamsungTV IP -KEY      KEY
-       iSamsungTV IP -TEXT     TEXT
-       iSamsungTV IP -SMS      DATE TIME FROM NUMBER TO NUMBER MESSAGE
-       iSamsungTV IP -CALL     DATE TIME FROM NUMBER TO NUMBER
-       iSamsungTV IP -SCHEDULE SUBJECT STARTDATE STARTTIME ENDDATE ENDTIME LOCATION OWNER NUMBER MESSAGE
+Usage: iSamsungTV (SERIE) IP -COMMAND
 ```
 
+Argument: SERIE
 ```
-Examples: iSamsungTV 192.168.1.11 -KEY KEY_VOLUP
-          (Simulates press button Volume Up)
-
-          iSamsungTV 192.168.1.11 -TEXT "Colour Haze"
-          (Sends text to YouTube...)
-
-          iSamsungTV 192.168.1.11 -SMS 2013-6-24 "7:01:01 PM" Cris +555-4323 Me +555-2343 "Get Off The Couch!?"
-          (Show incomming SMS)
-
-          iSamsungTV 192.168.1.11 -CALL 23:06:01 Cris +555-4323 "" ""
-          (Show incomming call, skips input with empty strings)
+  The TV model series B, C, D, E or F are available.
+  If SERIES is ommited, it assumes a series C or D model TV
 ```
 
-### Key Codes
+Argument: COMMAND
+```
+  The following commands are available KEY, TEXT, CALL, SMS or SCHEDULE
+```
 
-The Key Codes can be found [here!](https://raw.githubusercontent.com/Tristan79/iSamsungTV/master/KeyCodes.txt)
+COMMAND: KEY
+```
+Usage:   iSamsungTV (SERIE) IP -KEY KEY
+Example: iSamsungTV E 10.0.0.13 -KEY KEY_VOLUP
+         (Simulates Volume Up remote button press on series E TV located on the network on ip 10.0.0.13)
+         For a list of keys run: iSamsungTV KEYS
+```
+
+COMMAND: TEXT
+```
+Usage:   iSamsungTV (SERIE) IP -TEXT TEXT
+Example: iSamsungTV D 10.0.0.11 -TEXT "Colour Haze"
+         (Sends text to YouTube... on a series D TV)
+```
+
+COMMAND: CALL
+```
+Usage:   iSamsungTV (SERIE) IP -CALL DATE TIME FROM NUMBER TO NUMBER
+Example: iSamsungTV 10.0.0.11 -CALL 23:06:01 Cris +555-4323 "" ""
+         (Show incomming call, skips input with empty strings)
+```
+
+COMMAND: SMS
+```
+Usage:   iSamsungTV (SERIE) IP -SMS DATE TIME FROM NUMBER TO NUMBER MESSAGE
+Example: iSamsungTV 10.0.0.13 -SMS 2013-6-24 "7:01:01 PM" Cris +555-4323 Me +555-2343 "Get Off The Couch!?"
+         (Show incomming SMS)
+```
+
+COMMAND: SCHEDULE
+```
+Usage:   iSamsungTV (SERIE) IP -SCHEDULE SUBJECT STARTDATE STARTTIME ENDDATE ENDTIME LOCATION OWNER NUMBER MESSAGE
+```
+
+
+### Key codes
+
+To get the key codes, run ```iSamsungTV keys```
  
 ### [iSamsungTVPopup.sh](https://github.com/Tristan79/iSamsungTV/raw/master/iSamsungTVPopup.sh)
 
@@ -85,7 +115,7 @@ It lets you send notification popup messages to your screen.
 iSamsungTVPopup.sh 10.0.0.2 "Pop says the message on the big screen!" 
 ```
 
-_Using the sms function with a little bit of extra scripting_
+_...using the sms function with a little bit of extra scripting..._
 
 
 ## Future Update
@@ -94,8 +124,6 @@ Found interesting links about SOAP and DLNA... Reading the TV settings!? [Link](
 
 
 ### SOAP
-
-The SOAP ports are 52235 & 55000.
 
 I found some other SOAP stuff which I have not tried yet... and there is probably others where you can read the Source input and the Volume Level... its up to you to expand this!
 
@@ -135,6 +163,7 @@ User-Agent: HttpSamyGO/1.1
 * v0.01 Samygo & [Remote](https://forum.samygo.tv/viewtopic.php?t=5794)
 * v0.02 Domoticz & [SOAP](https://www.domoticz.com/wiki/Samsung_TV)
 * v1.03 Push The Button, Sweet ([github](https://github.com/Tristan79/iSamsungTV) publish release)
+* v1.04 Added support for remote (B series) and soap messaging (E & F series)
 
 ## License
 
