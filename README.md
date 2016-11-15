@@ -51,56 +51,55 @@ You can download and unpack the [source](https://github.com/Tristan79/iSamsungTV
 Usage: iSamsungTV (SERIE) IP -COMMAND
 ```
 
-Argument: SERIE
+#### Argument: SERIE
 ```
   The TV model series C, D, E or F are available.
   If SERIES is ommited, it assumes a series C or D model TV or Blue Ray Disc Players
 ```
 
-Argument: COMMAND
+#### Argument: COMMAND
 ```
   The following commands are available KEY, TEXT, CALL, SMS or SCHEDULE
 ```
 
-COMMAND: KEY
+#### COMMAND: KEY
 ```
 Usage:   iSamsungTV (SERIE) IP -KEY KEY
 Example: iSamsungTV E 10.0.0.13 -KEY KEY_VOLUP
          (Simulates Volume Up remote button press on series E TV located on the network on ip 10.0.0.13)
-         For a list of keys run: iSamsungTV KEYS
 ```
 
-COMMAND: TEXT
+__Keys__
+
+To get a list of usable keys, run ```iSamsungTV keys```
+
+#### COMMAND: TEXT
 ```
 Usage:   iSamsungTV (SERIE) IP -TEXT TEXT
 Example: iSamsungTV D 10.0.0.11 -TEXT "Colour Haze"
          (Sends text to YouTube... on a series D TV)
 ```
 
-COMMAND: CALL
+#### COMMAND: CALL
 ```
 Usage:   iSamsungTV (SERIE) IP -CALL DATE TIME FROM NUMBER TO NUMBER
 Example: iSamsungTV 10.0.0.11 -CALL 23:06:01 Cris +555-4323 "" ""
          (Show incomming call, skips input with empty strings)
 ```
 
-COMMAND: SMS
+#### COMMAND: SMS
 ```
 Usage:   iSamsungTV (SERIE) IP -SMS DATE TIME FROM NUMBER TO NUMBER MESSAGE
 Example: iSamsungTV 10.0.0.13 -SMS 2013-6-24 "7:01:01 PM" Cris +555-4323 Me +555-2343 "Get Off The Couch!?"
          (Show incomming SMS)
 ```
 
-COMMAND: SCHEDULE
+#### COMMAND: SCHEDULE
 ```
 Usage:   iSamsungTV (SERIE) IP -SCHEDULE SUBJECT STARTDATE STARTTIME ENDDATE ENDTIME LOCATION OWNER NUMBER MESSAGE
 ```
 
 
-### Key codes
-
-To get the key codes, run ```iSamsungTV keys```
- 
 ### [iSamsungTVPopup.sh](https://github.com/Tristan79/iSamsungTV/raw/master/iSamsungTVPopup.sh)
 
 It lets you send notification popup messages to your screen. 
