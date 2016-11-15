@@ -158,7 +158,6 @@ int samsungtv_message(unsigned char string[], int net_socket,int type) {
     unsigned char remote[] = "SamsungTVRemote";
     unsigned char message[1024];
     memset (message,0x00,1024);
-    // if series is B use "Remote Lan Control"
     unsigned int s = samsungtv_setstring(message+1,"iphone.iapp.samsung",0) + 1;
     unsigned int i = s+4+(type==eKey?1:0);
     i += samsungtv_setstring(message+i,string,1);
@@ -344,7 +343,7 @@ v0.4
 
 int intro() {
     printf("iSamsungTV 'Square Eye'\nVersion 1.04 copyright (c) 2013-2016 Tristan (@monkeycat.nl)\n");
-    printf("Remote command line interface for SamsungTV  Series B, C, D, E and F\n\n");
+    printf("Remote command line interface for Samsung Smart TV\nSamsung TV Series C, D, E, F and Blue Ray Disc Players with Smart Hub feature\n\n");
 }
 
 int keys() {
@@ -597,7 +596,7 @@ int keys() {
 
 int usage() {
     printf("Usage: iSamsungTV (SERIE) IP -COMMAND\n\n");
-    printf("Argument: SERIE\n  The TV model series B, C, D, E or F are available.\n  If SERIES is ommited, it assumes a series C or D model TV\n\n");
+    printf("Argument: SERIE\n  The TV model series B, C, D, E or F are available.\n  If SERIES is ommited, it assumes a series C or D model TV or Blue Ray Disc Players\n\n");
     printf("Argument: COMMAND\n  The following commands are available KEY, TEXT, CALL, SMS or SCHEDULE\n\n");
 
     printf("COMMAND: KEY\n");
@@ -667,16 +666,15 @@ int main(int argc, char *argv[]) {
 
     // Choose right port for the right series
     // Port changes throughout the series increments
-    char port_remote_b[]    = "2345";
+
     char port_remote_cdef[] = "55000";
     char port_upnp_cd[]     = "52235";
     char port_upnp_ef[]     = "7676";
     char *port = port_remote_cdef;
-    
-    if (series == 'B') port = port_remote_b;
+
     if (mode != eKey && mode != eText) {
-        port = port_upnp_cd;
         if (series == 'E' || series == 'F') port = port_upnp_ef;
+        else port = port_upnp_cd;
     }
     
     

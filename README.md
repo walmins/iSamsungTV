@@ -5,8 +5,7 @@
 Smarthome lovers! Check out [iBrew](https://github.com/Tristan79/iBrew/) the Smarter Coffee and iKettle 2.0 interface?!
 
 ## Introduction
-iBrew is an interface to the Samsung TV series C, D, E and F...
-It uses the network capabilities of the TV to mimic the remote and send notification messages to the big screen!?
+iSamsungTV is an interface to the Samsung TV series C, D, E and F and Blue Ray Disc Players with Smart Hub feature. It uses the network capabilities of the TV to mimic the remote and send notification messages to the big screen!?
 
 __Please post any working model in the issues__
 
@@ -19,13 +18,8 @@ __Please post any working model in the issues__
 ### What it can't do?
  * Read the current TV source
  * Read the current Volume
- * Get the TV out of Stand-by
+ * Get the TV out of Stand-by (possible with CEC)
  
-### Notes
- * Series F and up not tested!
- * SOAP only tested on a C Series TV!
- * Any issues post in comments!
-
 ## Download
 
 You can download a precompiled binary for [macOS](https://github.com/Tristan79/iSamsungTV/raw/master/macOS/iSamsungTV) or the [Raspberry Pi](https://github.com/Tristan79/iSamsungTV/raw/master/pi/iSamsungTV) using a terminal
@@ -59,8 +53,8 @@ Usage: iSamsungTV (SERIE) IP -COMMAND
 
 Argument: SERIE
 ```
-  The TV model series B, C, D, E or F are available.
-  If SERIES is ommited, it assumes a series C or D model TV
+  The TV model series C, D, E or F are available.
+  If SERIES is ommited, it assumes a series C or D model TV or Blue Ray Disc Players
 ```
 
 Argument: COMMAND
@@ -163,7 +157,7 @@ User-Agent: HttpSamyGO/1.1
 * v0.01 Samygo & [Remote](https://forum.samygo.tv/viewtopic.php?t=5794)
 * v0.02 Domoticz & [SOAP](https://www.domoticz.com/wiki/Samsung_TV)
 * v1.03 Push The Button, Sweet ([github](https://github.com/Tristan79/iSamsungTV) publish release)
-* v1.04 Added support for remote (B series) and soap messaging (E & F series)
+* v1.04 Added support E & F series
 
 ## License
 
