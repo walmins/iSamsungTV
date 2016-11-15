@@ -111,7 +111,7 @@ iSamsungTVPopup.sh 10.0.0.2 "Pop says the message on the big screen!"
 _...using the sms function with a little bit of extra scripting..._
 
 
-## Future Update
+## Development
 
 Found interesting links about SOAP and DLNA... Reading the TV settings!? [Link](http://sc0ty.pl/tag/rendering-control/) [Link](https://wiki.samygo.tv/index.php5/Media_Play_and_DLNA) [Link](http://upnp.org/specs/av/UPnP-av-RenderingControl-v1-Service.pdf)
 
