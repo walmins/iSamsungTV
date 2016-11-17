@@ -619,7 +619,7 @@ int usage() {
     printf("COMMAND: SCHEDULE\n");
     printf("Usage:   iSamsungTV (SERIE) IP -SCHEDULE SUBJECT STARTDATE STARTTIME ENDDATE ENDTIME LOCATION OWNER NUMBER MESSAGE\n\n");
     
-    printf("\niSamsungTVPopup.sh bash script for notification messages on the big screen\n\n#!/bin/bash\niSamsungTV $1 -SMS \"\" \"\" \"\" \"\" \"\" \"\" $2\nSLEEP 0.3\niSamsungTV $1 -KEY KEY_ENTER\nSLEEP 3\niSamsungTV $1 -KEY KEY_ENTER\n\nUsage: iSamsungTVPopup.sh 10.0.0.2 \"Pop Says the message on the silver screen\"\n\n");
+    printf("\niSamsungTVPopup.sh bash script for notification messages on the big screen\n\n#!/bin/bash\niSamsungTV $1 -SMS \"\" \"\" \"\" \"\" \"\" \"\" $2\nsleep 0.3\niSamsungTV $1 -KEY KEY_ENTER\nsleep 3\niSamsungTV $1 -KEY KEY_ENTER\n\nUsage: iSamsungTVPopup.sh 10.0.0.2 \"Pop Says the message on the silver screen\"\n\n");
 }
 
 int main(int argc, char *argv[]) {
