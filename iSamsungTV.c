@@ -230,7 +230,9 @@ iSamsungTV SOAP Interface
 //
 // SamsungTV SOAP MessageBox Interface (SMS,Schedule,Call)
 //
-int samsungtv_soap(unsigned char ip[], int net_socket,char requestbody[]) {
+
+
+int samsungtv_soap_message(unsigned char ip[], int net_socket,char requestbody[]) {
  
     char request[3072];
     char buffer[4096];
@@ -281,7 +283,7 @@ int samsungtv_sms(char ip[], int net_socket, char date[], char time[], char from
                     "&lt;Name&gt;%s&lt;/Name&gt;"
                     "&lt;/Sender&gt;"
                     "&lt;Body&gt;%s&lt;/Body&gt;",date,time,tonumber,to,fromnumber,from,message);
-    return samsungtv_soap(ip,net_socket,request);
+    return samsungtv_soap_message(ip,net_socket,request);
 }
 
 
@@ -305,7 +307,7 @@ int samsungtv_schedule(char ip[], int net_socket, char subject[], char startdate
                     "&lt;/EndTime&gt;"
                     "&lt;Location&gt;%s&lt;/Location&gt;"
                     "&lt;Body&gt;%s&lt;/Body&gt;",startdate,starttime,number,owner,subject,enddate,endtime,location,message);
-    return samsungtv_soap(ip,net_socket,request);
+    return samsungtv_soap_message(ip,net_socket,request);
 }
 
 
@@ -326,10 +328,8 @@ int samsungtv_call(char ip[], int net_socket, char date[], char time[], char fro
                     "&lt;Number&gt;%s&lt;/Number&gt;"
                     "&lt;Name&gt;%s&lt;/Name&gt;"
                     "&lt;/Caller&gt;",date,time,tonumber,to,fromnumber,from);
-    return samsungtv_soap(ip,net_socket,request);
+    return samsungtv_soap_message(ip,net_socket,request);
 }
-
-
 
 
 /* 
@@ -610,7 +610,7 @@ int usage() {
 
     printf("COMMAND: CALL\n");
     printf("Usage:   iSamsungTV (SERIE) IP -CALL DATE TIME FROM NUMBER TO NUMBER\n");
-    printf("Example: iSamsungTV 10.0.0.11 -CALL 23:06:01 Cris +555-4323 \"\" \"\"\n         (Show incomming call, skips input with empty strings)\n\n");
+    printf("Example: iSamsungTV 10.0.0.11 -CALL 2013-6-24 23:06:01 Cris +555-4323 \"\" \"\"\n         (Show incomming call, skips input with empty strings)\n\n");
     
     printf("COMMAND: SMS\n");
     printf("Usage:   iSamsungTV (SERIE) IP -SMS DATE TIME FROM NUMBER TO NUMBER MESSAGE\n");
@@ -697,7 +697,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "iSamsungTV: Connected Failure (%s)\n", gai_strerror(net_status));
         return 2;
     }
-   
+
     // Process protocol
     if (mode == eKey || mode == eText) {
         int auth_status = samsungtv_authenticate(argv[1+sa],net_socket);
