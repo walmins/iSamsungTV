@@ -83,7 +83,7 @@ Example: iSamsungTV D 10.0.0.11 -TEXT "Colour Haze"
 #### COMMAND: CALL
 ```
 Usage:   iSamsungTV (SERIE) IP -CALL DATE TIME FROM NUMBER TO NUMBER
-Example: iSamsungTV 10.0.0.11 -CALL 23:06:01 Cris +555-4323 "" ""
+Example: iSamsungTV 10.0.0.11 -CALL 2013-6-24 23:06:01 Cris +555-4323 "" ""
          (Show incomming call, skips input with empty strings)
 ```
 
