@@ -12,7 +12,7 @@ __Please post any working model in the issues__
 ### It features!
  * Used for bridging and scripting in smarthome controller software ! 
  * Command Line 
- * Popup messages! 
+ * Popup messages! (C & D only)
  * Youtube Search (? don't think we need it, but ok :-)
 
 ### What it can't do?
