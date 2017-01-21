@@ -1,9 +1,5 @@
 # iSamsungTV: Remote Command Line Interface
 
-## News
-
-Smarthome lovers! Check out [iBrew](https://github.com/Tristan79/iBrew/) the Smarter Coffee and iKettle 2.0 interface?!
-
 ## Introduction
 iSamsungTV is an interface to the Samsung TV series C, D, E and F and Blue Ray Disc Players with Smart Hub feature. It uses the network capabilities of the TV to mimic the remote and send notification messages to the big screen!?
 
@@ -19,6 +15,15 @@ __Please post any working model in the issues__
  * Read the current TV source
  * Read the current Volume
  * Get the TV out of Stand-by (possible with CEC)
+
+### Other nice stuff!!!
+
+ * [iBrew](https://github.com/Tristan79/iBrew) iKettle, iKettle 2.0 and Smarter Coffee Interface
+ * [iSamsungTV](https://github.com/Tristan79/iSamsungTV) the command line interface to Samsung TV series C, D, E, F and Blue Ray Disc Players with Smart Hub feature.
+ * [Medisana Scale](https://github.com/keptenkurk/BS440) with [Domoticz](http://domoticz.com/) bridge to Medisana BS440, BS430,... weight scales.
+ * [Xiaomi Mi Plant Sensor](https://github.com/Tristan79/miflora) with [Domoticz](http://domoticz.com/) bridge
+ * [HUE Hack](https://github.com/Tristan79/HUEHack) Soft Link Button for HUE Bridge (& rooting the bridge & enable WiFi!)
+ * [Vento](https://github.com/Tristan79/Vento)  The itho, duco, orcon, zehnder, storkair: arduino [mysensors 2.0](https://www.mysensors.org) controller!!!
  
 ## Download
 
@@ -102,7 +107,7 @@ Usage:   iSamsungTV (SERIE) IP -SCHEDULE SUBJECT STARTDATE STARTTIME ENDDATE END
 
 ### [iSamsungTVPopup.sh](https://github.com/Tristan79/iSamsungTV/raw/master/iSamsungTVPopup.sh)
 
-It lets you send notification popup messages to your screen. 
+It lets you send notification popup messages to your screen (D & E only). 
  
 ```
 iSamsungTVPopup.sh 10.0.0.2 "Pop says the message on the big screen!" 
