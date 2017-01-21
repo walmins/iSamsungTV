@@ -5,6 +5,8 @@ iSamsungTV is an interface to the Samsung TV series C, D, E and F and Blue Ray D
 
 __Please post any working model in the issues__
 
+Contact <tristan@monkeycat.nl>!
+
 ### It features!
  * Used for bridging and scripting in smarthome controller software ! 
  * Command Line 
